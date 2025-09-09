@@ -1,4 +1,4 @@
-```
+```lua
 local TimeManager = require("ModuleLocation")
 
 local function OnSuccess()
