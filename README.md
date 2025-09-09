@@ -1,3 +1,5 @@
+Example is down blow.
+
 ```lua
 local TimeManager = require("ModuleLocation")
 
