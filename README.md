@@ -13,11 +13,11 @@ end
 
 TimeManager.AddCooldown("IDForSave", 
 	{
-		["Name"] = "Run",
-		["Time"] = .1,
+		["Name"] = "Run", -- unique string name for save cooldown id
+		["Time"] = .1, -- how many time need for cooldown
 		["Callback"] = {
-			["Success"] = OnSuccess,
-			["Failed"] = OnFailed,
+			["Success"] = OnSuccess, -- run function when cooldown is not running with name that we used
+			["Failed"] = OnFailed, -- if cooldown is running 
 		}
 	}
 )
