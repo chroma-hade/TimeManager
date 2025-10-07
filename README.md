@@ -3,11 +3,11 @@ Example is down blow.
 ```lua
 local TimeManager = require("ModuleLocation")
 
-local function OnSuccess()
+local function OnSuccess() -- For main your code function
 	print("Attack!")
 end
 
-local function OnFailed()
+local function OnFailed() -- For if cooldown is on running 
 	print("On cooldown!")
 end
 
