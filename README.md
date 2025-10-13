@@ -7,8 +7,8 @@ local function OnSuccess() -- For main your code function
 	print("Attack!")
 end
 
-local function OnFailed() -- For if cooldown is on running 
-	print("On cooldown!")
+local function OnFailed(TimeLeft : number) -- For if cooldown is on running 
+	print("On cooldown! Time Left: " .. TimeLeft) -- you can get cooldown time progress
 end
 
 TimeManager.AddCooldown("IDForSave", 
