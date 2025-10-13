@@ -1,7 +1,7 @@
 local TimeManager = {}
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
+local TweenService = require(ReplicatedStorage["TweenService"])
 
 local RunningCooldowns = {}
 
@@ -31,6 +31,17 @@ local function RemoveCooldown(Data : {ID : string, Name : string})
 			ClearIfEmtpy(ID)
 		end
 	end
+end
+
+local function IsCooldown(ID : string, Data : CooldownData)
+	local Store = RunningCooldowns[ID]
+	if Store then
+		local Cooldown = Store[Data["Name"]]
+		if Cooldown then
+			return true
+		end
+	end
+	return false
 end
 
 local function AddCooldown(ID : string, Data : CooldownData)
@@ -70,5 +81,6 @@ local function AddCooldown(ID : string, Data : CooldownData)
 end
 
 TimeManager.AddCooldown = AddCooldown
+TimeManager.IsCooldown = IsCooldown
 
 return TimeManager
