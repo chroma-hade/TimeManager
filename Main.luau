@@ -33,10 +33,10 @@ local function RemoveCooldown(Data : {ID : string, Name : string})
 	end
 end
 
-local function IsCooldown(ID : string, Data : CooldownData)
+local function IsCooldown(ID : string, Name : string)
 	local Store = RunningCooldowns[ID]
 	if Store then
-		local Cooldown = Store[Data["Name"]]
+		local Cooldown = Store[Name]
 		if Cooldown then
 			return true
 		end
