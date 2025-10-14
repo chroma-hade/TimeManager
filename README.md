@@ -28,6 +28,6 @@ local OnCooldown : boolean = TimeManager.IsCooldown("SavedID", "Cooldown ID")
 if OnCooldown then
 	print("On Cooldown!")
 else
-	print("Not on cooldown.")
+	print("Not on Cooldown.")
 end
 ```
