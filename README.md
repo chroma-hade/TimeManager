@@ -1,4 +1,4 @@
-Example is down blow.
+Example is down below.
 
 ```lua
 local TimeManager = require("ModuleLocation")
