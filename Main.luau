@@ -80,7 +80,8 @@ local function AddCooldown(ID : string, Data : CooldownData)
 	end
 end
 
-TimeManager.AddCooldown = AddCooldown
 TimeManager.IsCooldown = IsCooldown
+TimeManager.AddCooldown = AddCooldown
+TimeManager.RemoveCooldown = RemoveCooldown
 
 return TimeManager
