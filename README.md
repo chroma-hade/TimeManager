@@ -22,6 +22,14 @@ TimeManager.AddCooldown("IDForSave",
 	}
 )
 
+-- Remove Cooldown
+TimeManager.RemoveCooldown(
+	{
+		["ID"] = "SavedID",
+		["Name"] = "Ability"
+	}
+)
+
 -- Check if cooldown exist
 local OnCooldown : boolean = TimeManager.IsCooldown("SavedID", "Cooldown ID")
 
