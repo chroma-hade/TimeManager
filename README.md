@@ -11,6 +11,7 @@ local function OnFailed(TimeLeft : number) -- For if cooldown is on running
 	print("On cooldown! Time Left: " .. TimeLeft) -- you can get cooldown time progress
 end
 
+-- Add Cooldown
 TimeManager.AddCooldown("IDForSave", 
 	{
 		["Name"] = "Run", -- unique string name for save cooldown id
