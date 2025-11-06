@@ -1,7 +1,7 @@
 local TimeManager = {}
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = require(ReplicatedStorage["TweenService"])
+local TweenService = game:GetService("TweenService")
 
 local RunningCooldowns = {}
 
