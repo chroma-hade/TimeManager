@@ -12,24 +12,20 @@ local function OnFailed(TimeLeft : number) -- For if cooldown is on running
 end
 
 -- Add Cooldown
-TimeManager.AddCooldown("IDForSave", 
-	{
-		["Name"] = "Run", -- unique string name for save cooldown id
-		["Time"] = .1, -- how many time need for cooldown
-		["Callback"] = {
-			["Success"] = OnSuccess, -- run function when cooldown is not running with name that we used
-			["Failed"] = OnFailed, -- if cooldown is running 
-		}
+TimeManager.AddCooldown("IDForSave", {
+	["Name"] = "Run", -- unique string name for save cooldown id
+	["Time"] = .1, -- how many time need for cooldown
+	["Callback"] = {
+		["Success"] = OnSuccess, -- run function when cooldown is not running with name that we used
+		["Failed"] = OnFailed, -- if cooldown is running 
 	}
-)
+})
 
 -- Remove Cooldown
-TimeManager.RemoveCooldown(
-	{
-		["ID"] = "SavedID",
-		["Name"] = "Ability"
-	}
-)
+TimeManager.RemoveCooldown({
+    ["ID"] = "SavedID",
+    ["Name"] = "Ability"
+})
 
 -- Check if cooldown exist
 local OnCooldown : boolean = TimeManager.IsCooldown("SavedID", "Cooldown ID")
