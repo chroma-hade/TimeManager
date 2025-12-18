@@ -13,52 +13,55 @@ type CooldownData = {
 
 local function ClearIfEmtpy(ID : string)
 	local Store = RunningCooldowns[ID]
-	if Store then
-		if next(Store) == nil then
-			RunningCooldowns[ID] = nil
-		end
+	if not Store or next(Store) ~= nil then
+		return
 	end
+	RunningCooldowns[ID] = nil
 end
 
 local function RemoveCooldown(Data : {ID : string, Name : string})
 	local ID = Data["ID"]
 	local Store = RunningCooldowns[ID]
-	if Store then
-		local Cooldown = Store[Data["Name"]]
-		if Cooldown then
-			Cooldown["IntValue"]:Destroy()
-			Store[Data["Name"]] = nil
-			ClearIfEmtpy(ID)
-		end
+	if not Store then
+		return
 	end
+	local Cooldown = Store[Data["Name"]]
+	if not Cooldown then
+		return
+	end
+	Cooldown["IntValue"]:Destroy()
+	Store[Data["Name"]] = nil
+	ClearIfEmtpy(ID)
 end
 
 local function IsCooldown(ID : string, Name : string)
 	local Store = RunningCooldowns[ID]
-	if Store then
-		local Cooldown = Store[Name]
-		if Cooldown then
-			return true
-		end
+	if not Store then
+		return false
+	end
+	local Cooldown = Store[Name]
+	if Cooldown then
+		return true
 	end
 	return false
 end
 
 local function AddCooldown(ID : string, Data : CooldownData)
 	local IsStored = RunningCooldowns[ID]
-	
+
 	local Callback = Data["Callback"]
 	local Name = Data["Name"]
 	local Time = Data["Time"]
-	
+
 	if IsStored and RunningCooldowns[ID][Name] then
 		local TimeData : number = RunningCooldowns[ID][Name]
-		if TimeData then
-			local IntValue : IntValue = TimeData["IntValue"]
-			local Cooltime : number = IntValue.Value
-			local Failed = Callback["Failed"]
-			return typeof(Failed) == "function" and task.defer(Failed, Cooltime) or false
+		if not TimeData then
+			return
 		end
+		local IntValue : IntValue = TimeData["IntValue"]
+		local Cooltime : number = IntValue.Value
+		local Failed = Callback["Failed"]
+		return typeof(Failed) == "function" and task.defer(Failed, Cooltime) or false
 	else
 		local Success = Callback["Success"]
 		local IntValue = Instance.new("IntValue")
