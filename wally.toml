@@ -1,0 +1,8 @@
+[package]
+name = "chroma-hade/timemanager"
+version = "1.0.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+license = "MIT"
+description = "Cooldowns for Roblox. Give one to a character, a player or just a name, and ask later whether it's done."
+exclude = ["TimeManager.rbxm", "aftman.toml"]
